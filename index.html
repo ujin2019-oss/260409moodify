@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font.css">
     <script src="script/action.js"></script>
-</head>
+
+      <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
 <body>
     <!-- header+#hero+(#section_box>section#section0$*4)+footer -->
 
@@ -34,43 +39,380 @@
         <nav>
             <ul class="gnb">
                 <li>
-                    <a href="#">무디소개</a>
+                <a href="#">무디소개</a>
                 </li>
                 <li>
-                    <a href="#">AI추천</a>
+                <a href="#">AI추천</a>
                 </li>
                 <li>
-                    <a href="#">무디탐색</a>
+                <a href="#">무디탐색</a>
                 </li>
                 <li>
-                    <a href="#">무디등록</a>
+                <a href="#">무디등록</a>
                 </li>
                 <li>
-                    <a href="#">마이뮤직</a>
+                <a href="#">마이뮤직</a>
                 </li>
             </ul>
         </nav>
     </header>
-     
-    <div id="hero"></div>
 
-    <div id="section_box">
-        <section id="section01" class="container"></section>
+<!--     <div id="hero">
+        <ul class="slidebox">
+            <li>
+                <img src="images/hero_bg01.jpg" alt="">
+                    <div class="textbox">
+                    <div class="text1">오늘의 추천</div>
+                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
+                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
+                    </div>
+            </li>
+            <li>
+                <img src="images/hero_bg02.jpg" alt="">
+                    <div class="textbox">
+                    <div class="text1">오늘의 추천</div>
+                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
+                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
+                    </div>
+            </li>
+            <li>
+                <img src="images/hero_bg03.jpg" alt="">
+                    <div class="textbox">
+                    <div class="text1">오늘의 추천</div>
+                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
+                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
+                    </div>
+            </li>
+        </ul>
+    </div>
+ -->
+
+   <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">                <img src="images/hero_bg01.jpg" alt="">
+                    <div class="textbox">
+                    <div class="text1">오늘의 추천</div>
+                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
+                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
+                    </div></div>
+        <div class="swiper-slide">                <img src="images/hero_bg02.jpg" alt="">
+                    <div class="textbox">
+                    <div class="text1">오늘의 추천</div>
+                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
+                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
+                    </div></div>
+        <div class="swiper-slide">                <img src="images/hero_bg03.jpg" alt="">
+                    <div class="textbox">
+                    <div class="text1">오늘의 추천</div>
+                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
+                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
+                    </div></div>
+    </div>
+    <div class="swiper-button-next">            <img src="https://www.pngarts.com/files/8/Happy-Doraemon-PNG-Image.png" alt="버튼" class="dora-next"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 
 
-        <section id="section02"></section>
+ <div id="section_box">
+        <section id="section01">
+            <div class="container">
+                <div class="board">
+                    <div class="tit"><img src="images/2-1icon.png" alt="">
+                    <span>AI 분석추천 list</span>
+                    <a href="#" class="btm_more"> <img src="images/2-0icon.png" alt=""></a>
+                    </div>
+                    <ul>
+                        <li><a href="#">
+                            <div class="number">1</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">2</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">3</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">4</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">5</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="board">
+                    <div class="tit"><img src="images/2-2icon.png" alt="">
+                    <span>AI 분석추천 list</span>
+                    <a href="#" class="btm_more"> <img src="images/2-0icon.png" alt=""></a>
+                    </div>
+                    <ul>
+                        <li><a href="#">
+                            <div class="number">1</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">2</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">3</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">4</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">5</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                        </ul>
+                    </div>
+                <div class="board">
+                    <div class="tit"><img src="images/2-3icon.png" alt="">
+                    <span>AI 분석추천 list</span>
+                    <a href="#" class="btm_more"> <img src="images/2-0icon.png" alt=""></a>
+                    </div>
+                    <ul>
+                        <li><a href="#">
+                            <div class="number">1</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">2</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">3</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">4</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                            <li><a href="#">
+                            <div class="number">5</div>
+                            <div class="title">사랑하게될거야</div>
+                            <div class="singer">방탄소년단</div>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="section02">
+            <div class="container">
+                <h2>감성 플레이리스트
+                    <span>지금 이 순간만 느낄 수 있는 감성을 한 스푼 추가해 당신의 취향을 담은 플레이리스트를 들려드립니다</span>
+                </h2>
+                <ul class="content">
+                    <li>
+                        <a href="#">
+                            <h3>행복</h3>
+                            <img src="images/sec2_img1.png" alt="" class="sec2_img1">
+                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>행복</h3>
+                            <img src="images/sec2_img2.png" alt="" class="sec2_img1">
+                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>행복</h3>
+                            <img src="images/sec2_img3.png" alt="" class="sec2_img1">
+                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>행복</h3>
+                            <img src="images/sec2_img4.png" alt="" class="sec2_img1">
+                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>행복</h3>
+                            <img src="images/sec2_img5.png" alt="" class="sec2_img1">
+                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>행복</h3>
+                            <img src="images/sec2_img6.png" alt="" class="sec2_img1">
+                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+ 
+        <section id="section03">
+        <div class="container">
+            <ul class="content">
+                <li>
+                    <div class="textbox">
+                        <strong>내가 구독한 무디파이 DJ</strong>
+                        <p>내 취향의 DJ 찾아서 <br> 좋아하는 음악을 함께 들어요</p>
+                        <a href="#" class="btn1">더 알아보기<img src="images/sec3_arrow.png" alt=""></a>
+                    </div>
+                    <figure><img src="images/sec3_img1.png" alt=""></figure>
+                </li>
+                    <li>
+                    <div class="textbox">
+                        <strong>내가 구독한 무디파이 DJ</strong>
+                        <p>내 취향의 DJ 찾아서<br>좋아하는 음악을 함께 들어요</p>
+                        <a href="#" class="btn1">더 알아보기<img src="images/sec3_arrow.png" alt=""></a>
+                    </div>
+                    <figure><img src="images/sec3_img2.png" alt=""></figure>
+                </li>
+            </ul>
+        </div>
+        </section>
 
 
-        <section id="section03"></section>
-
-
-        <section id="section04"></section>
+        <section id="section04">
+        <div class="container">
+            <h2>내 음악 취향 레포트
+                <span>지금까지의 음악 기록을 바탕으로<br>당신의 취향을 정밀하게 분석했습니다</span>
+                </h2>
+                
+                <ul class="content">
+                    <li class="card1">
+                        <a href="#">
+                            <div class="textbox">
+                                <h3>최근 플레이리스트</h3>
+                                <p>무디 ai가 추천해준 플레이<br>리스트를 가장 많이 들었어요!</p>
+                                <img src="images/sec4_img1.png" alt="" class="s4_img1">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="card2">
+                        <a href="#">
+                            <div class="textbox">
+                                <h3>최신앨범</h3>
+                                <p>봄 내음 가득한 계절의<br>최신 음악을 선호하시는군요</p>
+                                <img src="images/sec4_img2.png" alt="" class="s4_img2">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="card3">
+                        <a href="#">
+                            <div class="textbox">
+                                <h3>발라드 DJ</h3>
+                                <p>내가 구독한 무디파이 DJ는<br>00년대 발라다 DJ가 많아요</p>
+                                <img src="images/sec4_img3.png" alt="" class="s4_img3">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="card4">
+                        <a href="#">
+                            <div class="textbox">
+                                <h3>나의 플레이 횟수</h3>
+                                <p>무디 ai가 추천해준 플레이<br>리스트를 가장 많이 들었어요!</p>
+                                <span class="num">573</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="card5">
+                        <a href="#">
+                            <div class="textbox">
+                                <h3>감성 플레이리스트</h3>
+                                <p>지금 이 순간 내 감성을 담은<br>플레이리스트를 위주로 들었어요</p>
+                                <img src="images/sec4_img5.png" alt="" class="s4_img5">
+                            </div>
+                        </a>
+                    </li>
+                    <li class="card6">
+                        <a href="#">
+                            <div class="textbox">
+                                <h3>좋아요</h3>
+                                <p>내가 좋아요한 음악 횟수에요<br>무디ai 추천 플리에 반영돼요</p>
+                                <span class="num">110</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        </section>
 
 
     </div>
 
-    <footer></footer>
+    <footer>
+        <div class="container">
+            <figure><img src="images/footlogo.png" alt=""></figure>
+            <span>당신의 취향과 감성을 연결하는 음악 플랫폼</span>
+            <p>대표자 명: 김무디   l   사업자등록번호: 123-45-67890   l   주소: 서울특별시 강남구 테헤란로 123, 5층<br>대표전화: 1555-1234   l   이메일: contact@moodify.co.kr   © 2026 Moodify. All rights reserved</p>
+            <div class="footlink">
+                <a href="#">이용약관</a>
+                <a href="#">개인정보처리현황</a>
+                <a href="#">고객센터</a>
+            </div>
 
+        </div>
+    </footer>
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".dora-next",
+            prevEl: ".swiper-button-prev",
+        },
+        });
+    </script>
         
 </body>
 </html>
