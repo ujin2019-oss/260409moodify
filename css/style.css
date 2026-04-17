@@ -4,8 +4,9 @@
 * {margin: 0; padding: 0;}
 li {list-style: none;}
 a {text-decoration: none; color: #333;}
-
+html {  scroll-behavior: smooth;}
 body {font-family:'Pretendard','맑은 고딕', sans-serif;}
+hr {border: 0 /*none*/; }
 
 .swiper-slide .slidebox img {
   display: block;
@@ -13,7 +14,7 @@ body {font-family:'Pretendard','맑은 고딕', sans-serif;}
   height: 100%;
   object-fit: cover;}
 
-.container {width: 1400px; margin: 0 auto; }
+.container {max-width: 1400px; margin: 0 auto; }
 .btn1 {font-size: 15px; color: #fff; border: 1px solid #fff; display: inline-flex; padding:  15px 32px; gap: 33px; align-items: center; border-radius: 50px;}
 
 
@@ -25,11 +26,28 @@ header .topset  .login_box .login {display: flex; justify-content: end;}
 header .topset  .login_box .logout {display: none;}
 header .topset  .login_box a {padding: 16px 7px ;}
 
+
+
 header h1 {margin: 0 auto; text-align: center;}
 header nav {margin-top: 34px; }
 header nav .gnb { display: flex; }
-header nav .gnb li {font-size: 18px; flex-grow: 1; display: flex;}
-header nav .gnb li a { flex-grow: 1; text-align: center; padding: 13px;}
+header nav .gnb > li {font-size: 18px; flex-grow: 1; display: flex; position: relative;}
+header nav .gnb > li > a {flex-grow: 1; text-align: center; padding: 13px 0;}
+
+
+
+header nav .gnb li .lnb {position: absolute; z-index: 3; width: 100%; top: 100%; background-color: #8B5CF6; /* overflow: hidden; height:0; */ transition: 0.5s ; border: 1px solid #000; opacity: 0; visibility: hidden;}
+header nav .gnb li:hover .lnb {/* height: 190px; */ opacity: 1; visibility: visible;}
+
+header nav .gnb .menu1:hover .lnb {height: 90px;}
+
+
+header nav .gnb li .lnb li {font-size: 18px;}
+header nav .gnb li .lnb li a{color: #fff; padding: 13px 0; display: block; text-align: center;}
+
+header nav .gnb li:hover {background: #6c2dc5;}
+header nav .gnb li:hover a {color: #fff;}
+
 
 #hero {width: 100%; height: 454px; background: url(../images/visual_main.jpg) no-repeat center 0 ;
     background-size: cover ; position: relative /* background-image: url(../images/visual_main.jpg); background-repeat: no-repeat; background-position: center 0; */}
@@ -134,5 +152,49 @@ footer .container {color: #fff; position: relative;}
 footer figure {margin-bottom: 13px;}
 footer span {font-size: 16px; color: #fff; margin-bottom: 28px; display: block;}
 footer p {font-size: 14px;}
-footer .footlink {width: 265px;display: flex; gap: 35px; position: absolute; right: 0; bottom: 25px;}
+footer .footlink {width: 265px; display: flex; gap: 35px; position: absolute; right: 0; bottom: 25px;}
 footer .footlink a {color: #fff; font-size: 14px; font-weight: bold; }
+
+
+
+
+
+/* subpage style */
+
+/* greeting */
+
+#hero_sub {height: 300px; background: #eee ; }
+
+#section_box_sub {background: #f9f9f9; padding-top: 20px;}
+#section_box_sub .container {padding: 100px 0; }
+
+#section_box_sub nav {margin-top: 20px;}
+#section_box_sub nav .snb {padding: 0 165px ; background: #fff ; display: flex ; justify-content: center;}
+#section_box_sub nav .snb ul {}
+#section_box_sub nav .snb li {font-size: 18px ; }
+
+#section_box_sub nav .snb li a {padding: 13px 20px; display: block; color: #555;}
+
+#section_box_sub nav .snb li.now a, #section_box_sub nav .snb li:hover a {font-weight: 600; color: #000;}
+
+
+.content_sub {}
+.content_sub h2 {display: flex; flex-direction: column; align-items: center; }
+.content_sub strong {font-size: 40px; font-weight: 700; letter-spacing: 0.5em;}
+.content_sub h2 hr {width: 50% ; height: 1px; border-top: 1px dashed #3c3c3c; margin: 20px auto;}
+
+.content_sub span {font-size: 20px; font-weight: 400; color: #8B5CF6 ; }
+
+.content_sub .content_box {margin-top: 50px ;}
+.content_sub .content_box .content {display: flex; flex-wrap: wrap; gap: 41px;}
+  
+.content_box .content li {width: 26%; flex-grow: 1;}
+.content_box .content li figure img {width: 100%;}
+.content_box .content li h3 {margin: 7px 0;}
+
+
+.content_box .content li ul {}
+.content_box .content li ul li {border: 1px solid #000; width: 100%; font-size: 18px; color: #545454; line-height: 30px; position: relative; padding-left: 15px;} 
+
+/*::before 태그를 활용해 bullet 만들기*/
+.content_box .content li ul li::before {content:''; width: 4px; height: 4px; background: #6e3ed9; position: absolute; top: 14px; left: 0;}
