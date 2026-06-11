@@ -19,12 +19,24 @@ hr {border: 0 /*none*/; }
 
 
 header {}
-header .topset {display: flex; justify-content: space-between;}
-header .topset  .search_box {}
+/* 모바일 전용 햄버거 버튼/모달 백드롭 : PC에서는 숨김 (모바일 미디어쿼리에서만 노출) */
+.nav-toggle {display: none;}
+.nav-backdrop {display: none;}
+header .topset {display: flex; justify-content: space-between; align-items: center;}
+
+/* 검색 영역 : 아이콘 + 텍스트 pill 형태 */
+header .topset .search_box {display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border: 1px solid #8B5CF6; border-radius: 50px; color: #8B5CF6; font-size: 14px; cursor: text; transition: 0.3s;}
+header .topset .search_box:hover {background: #8B5CF6; color: #fff;}
+header .topset .search_box .material-symbols-outlined {font-size: 20px;}
+header .topset .search_box .search_txt {white-space: nowrap;}
+
 header .topset  .login_box {font-size: 15px;}
 header .topset  .login_box .login {display: flex; justify-content: end;}
 header .topset  .login_box .logout {display: none;}
-header .topset  .login_box a {padding: 16px 7px ;}
+header .topset  .login_box a {display: inline-flex; align-items: center; gap: 5px; padding: 16px 10px ; color: #555; transition: 0.3s;}
+header .topset  .login_box a .material-symbols-outlined {font-size: 19px; color: #8B5CF6; transition: 0.3s;}
+header .topset  .login_box a:hover {color: #F94DAB;}
+header .topset  .login_box a:hover .material-symbols-outlined {color: #F94DAB;}
 
 
 
@@ -71,11 +83,9 @@ header nav .gnb li:hover a {color: #fff;}
 .mySwiper .textbox p {font-size: 20px; margin-bottom: 70px; }
 .mySwiper .textbox a {font-size: 20px; color: #fff; padding: 16px 26px ; border-radius: 30px; background: linear-gradient(90deg, rgba(249, 77, 172, 0.4), rgb(139, 92, 246, 0.4)); display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 2px rgba(255, 255, 255, 0.8) ;}
 
-.mySwiper .swiper-pagination-bullet-active {background: red ;}
+.mySwiper .swiper-pagination-bullet-active {background: #fff ;}
 
-.mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {color: red ;}
-
-.dora-next {position:absolute ; width: 50px; right: 50px; z-index: 11 ; top: 50% ; transform: translateY(-50%);}
+.mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {color: #fff ;}
 
 #section_box .container {padding: 100px 0 ; }
 #section01 .container {display: flex ; gap: 36px; }
@@ -198,3 +208,144 @@ footer .footlink a {color: #fff; font-size: 14px; font-weight: bold; }
 
 /*::before 태그를 활용해 bullet 만들기*/
 .content_box .content li ul li::before {content:''; width: 4px; height: 4px; background: #6e3ed9; position: absolute; top: 14px; left: 0;}
+
+
+
+
+/* ===================================================================
+   모바일 전용 스타일 (max-width: 768px)
+   ※ PC 스타일은 위 코드 그대로 유지, 아래는 모바일 전용 추가 코드
+   =================================================================== */
+@media (max-width: 768px) {
+
+  /* ---------- 공통 : 가로 스크롤 방지 / 이미지 오버플로 방지 ---------- */
+  body {overflow-x: hidden;}
+  .container {max-width: 100%; padding-left: 16px; padding-right: 16px; box-sizing: border-box;}
+  .container img {max-width: 100%; height: auto;}
+
+  /* ---------- 헤더 : 상단엔 로고 + 햄버거만 노출 ---------- */
+  /* 햄버거 버튼(absolute, 높이 44px)이 히어로와 겹치지 않도록 최소 높이 + 하단 여백 확보 */
+  header {position: relative; box-sizing: border-box; min-height: 66px; padding-bottom: 16px;}
+  body.no-scroll {overflow: hidden;}              /* 드로어 열렸을 때 배경 스크롤 잠금 */
+
+  header h1 {margin-top: 14px;}
+  header h1 img {width: 130px;}
+
+  /* 햄버거 버튼 노출 (터치 타겟 44x44, 드로어보다 위에 위치) */
+  .nav-toggle {display: flex; align-items: center; justify-content: center; position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; padding: 0; background: none; border: none; cursor: pointer; z-index: 70;}
+  .nav-toggle .material-symbols-outlined {font-size: 32px; color: #8B5CF6;}
+
+  /* 모달 백드롭(딤 배경) */
+  .nav-backdrop {display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease; z-index: 55;}
+  .nav-backdrop.open {opacity: 1; visibility: visible;}
+
+  /* ---------- 내비 : 우측 슬라이드 드로어 모달 ---------- */
+  header nav {position: fixed; top: 0; right: 0; bottom: 0; width: 82%; max-width: 320px; margin-top: 0;
+              background: #fff; box-shadow: -4px 0 22px rgba(0,0,0,0.18);
+              transform: translateX(100%); transition: transform .3s ease; z-index: 60;
+              overflow-y: auto; box-sizing: border-box; padding: 64px 22px 34px;}
+  header nav.open {transform: translateX(0);}
+
+  /* 드로어 안: 검색 + 로그인 영역 (JS로 이동됨) */
+  header nav .topset {display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 0 0 14px 0; border-bottom: 1px solid #eee;}
+  header nav .topset .search_box {width: 100%; justify-content: flex-start; font-size: 14px; padding: 12px 16px; box-sizing: border-box; margin-bottom: 6px;}
+  header nav .topset .search_box .material-symbols-outlined {font-size: 20px;}
+  header nav .topset .login_box {font-size: 14px;}
+  header nav .topset .login_box .login {flex-direction: column; align-items: stretch; justify-content: flex-start;}
+  header nav .topset .login_box a {padding: 12px 6px; gap: 8px;}
+  header nav .topset .login_box a .material-symbols-outlined {font-size: 19px;}
+
+  /* 드로어 안: 메인 메뉴(GNB) */
+  header nav .gnb {flex-direction: column; display: flex; margin-top: 4px;}
+  header nav .gnb > li {font-size: 16px; border-bottom: 1px solid #eee;}
+  header nav .gnb > li > a {padding: 15px 6px; text-align: left;}        /* 손가락 터치 타겟 확보 */
+  header nav .gnb li:hover {background: transparent;}                    /* 모바일 hover 잔상 방지 */
+  header nav .gnb li:hover > a {color: #333;}
+  header nav .gnb li .lnb {display: none;}                              /* 2차 카테고리는 모바일에서 숨김 */
+
+  /* ---------- 히어로(Swiper) : 높이 고정 + 텍스트 중앙정렬 (잘림/깨짐 방지) ---------- */
+  .mySwiper {height: 380px;}
+  .mySwiper .swiper-wrapper {height: 380px;}
+  .mySwiper .swiper-slide {position: relative; height: 380px; overflow: hidden;}
+  .mySwiper .swiper-slide img {width: 100%; height: 100%; object-fit: cover;}
+  /* 텍스트 가독성을 위한 어두운 오버레이 */
+  .mySwiper .swiper-slide::after {content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.32); z-index: 1;}
+  .mySwiper .textbox {left: 0; right: 0; margin-left: 0; top: 50%; transform: translateY(-50%);
+                      padding: 0 24px; box-sizing: border-box; width: 100%; z-index: 2; text-align: left;}
+  .mySwiper .textbox .text1 {font-size: 13px; margin-bottom: 8px;}
+  .mySwiper .textbox strong {display: block; font-size: 20px; line-height: 1.35; margin-bottom: 14px;}
+  .mySwiper .textbox p {font-size: 13px; line-height: 1.5; margin-bottom: 20px;}
+  /* CTA 버튼 : 모바일에서 또렷하게 보이도록 솔리드 그라데이션 */
+  .mySwiper .textbox a {font-size: 14px; padding: 12px 22px; background: linear-gradient(90deg, #F94DAB, #8B5CF6); box-shadow: 0 4px 12px rgba(0,0,0,0.25);}
+  .mySwiper .textbox a img {width: 16px;}
+  /* 모바일에선 좌우 화살표 숨김 → 스와이프 + 페이지네이션 사용 */
+  .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {display: none;}
+  .mySwiper .swiper-pagination {bottom: 12px;}
+
+  /* ---------- 섹션 공통 여백 ---------- */
+  #section_box .container {padding: 40px 16px;}
+
+  /* ---------- section01 : AI 추천 리스트 ---------- */
+  #section01 .container {flex-direction: column; gap: 24px;}
+  #section01 .board .tit {gap: 16px; padding: 12px 20px; font-size: 16px;}
+  #section01 .board ul li a {padding: 0 20px;}
+
+  /* ---------- section02 : 감성 플레이리스트 ---------- */
+  #section02 h2 {width: 100%; font-size: 22px; margin-bottom: 28px;}
+  #section02 h2 span {font-size: 14px;}
+  #section02 .content {gap: 20px;}
+  #section02 .content li {width: 100%; flex-basis: 100%;}
+  #section02 .content li a {padding: 40px 24px 24px 24px;}
+  #section02 .content li a h3 {font-size: 22px; margin-bottom: 36px;}
+  #section02 .content li a p {font-size: 16px;}
+  #section02 .content li a .sec2_img1 {width: 56px;}
+  #section02 .content li a span {width: 44px; height: 44px; font-size: 22px; right: 24px; bottom: 16px;}
+
+  /* ---------- section03 : 구독한 DJ ---------- */
+  #section03 .content {flex-direction: column; gap: 24px;}
+  #section03 .content li {width: 100%; padding: 28px 24px;}
+  #section03 .content li strong {font-size: 22px;}
+  #section03 .content li figure {position: static; margin-top: 18px; text-align: center;}
+  #section03 .content li figure img {max-width: 60%;}
+
+  /* ---------- section04 : 음악 취향 레포트 ---------- */
+  #section04 h2 {width: 100%; font-size: 22px; margin-bottom: 28px;}
+  #section04 h2 span {font-size: 14px;}
+  #section04 .content {grid-template-columns: 1fr; grid-template-rows: none; gap: 18px;}
+  #section04 .content li,
+  #section04 .content li.card1,
+  #section04 .content li.card2,
+  #section04 .content li.card5 {grid-row: auto; grid-column: auto;}
+  #section04 .content li {min-height: 150px; padding: 28px 24px;}
+  #section04 .content li a .textbox h3 {font-size: 22px;}
+  #section04 .content li .s4_img1 {bottom: 20px; max-width: 45%; height: auto;}
+  #section04 .content li .s4_img2 {right: 20px; max-width: 38%; height: auto;}
+  #section04 .content li .s4_img3 {right: 16px; max-width: 38%; height: auto;}
+  #section04 .content li .s4_img5 {right: 20px; max-width: 38%; height: auto;}
+  #section04 .content li .num {font-size: 80px; right: 0; bottom: -16px;}
+
+  /* ---------- 푸터 ---------- */
+  footer {padding: 24px 0;}
+  footer span {font-size: 14px;}
+  footer p {font-size: 12px; line-height: 1.6;}
+  footer figure img {width: 120px;}
+  footer .footlink {position: static; width: 100%; margin-top: 18px; gap: 20px;}
+
+  /* ===== 서브페이지 (sub01_01.html) ===== */
+  #hero_sub {height: 160px;}
+
+  #section_box_sub .container {padding: 40px 16px;}
+  #section_box_sub nav .snb {padding: 0; overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch;}
+  #section_box_sub nav .snb li {font-size: 14px; white-space: nowrap;}
+  #section_box_sub nav .snb li a {padding: 12px 14px;}
+
+  .content_sub strong {font-size: 24px; letter-spacing: 0.2em;}
+  .content_sub h2 hr {width: 80%;}
+  .content_sub span {font-size: 15px; text-align: center;}
+  .content_sub .content_box {margin-top: 30px;}
+  .content_sub .content_box .content {gap: 28px;}
+  .content_box .content li {width: 100%; flex-basis: 100%;}
+  .content_box .content li ul li {font-size: 15px; line-height: 26px;}
+  .content_box .content li ul li::before {top: 11px;}
+
+}
