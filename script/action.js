@@ -7,6 +7,22 @@ document.addEventListener('DOMContentLoaded', function () {
   var topset   = header ? header.querySelector('.topset') : null;
   var h1       = header ? header.querySelector('h1') : null;
 
+  // ===== 라이트/다크 테마 토글 =====
+  function syncThemeIcon() {
+    var isLight = document.documentElement.classList.contains('light');
+    document.querySelectorAll('.theme-toggle .material-symbols-outlined').forEach(function (i) {
+      i.textContent = isLight ? 'dark_mode' : 'light_mode';   // 라이트면 '다크로' 아이콘, 다크면 '라이트로' 아이콘
+    });
+  }
+  syncThemeIcon();
+  document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var nowLight = document.documentElement.classList.toggle('light');
+      try { localStorage.setItem('theme', nowLight ? 'light' : 'dark'); } catch (e) {}
+      syncThemeIcon();
+    });
+  });
+
   if (!toggle || !nav) return;
 
   var mq = window.matchMedia('(max-width: 768px)');

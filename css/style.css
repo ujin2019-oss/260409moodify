@@ -19,6 +19,34 @@
   --glow:0 0 14px rgba(183,148,255,0.55);   /* 네온 글로우 */
 }
 
+/* ===== 라이트 모드 : html.light 일 때 변수/스타일 오버라이드 (기본은 다크) ===== */
+html.light{
+  --bg:#F4F1FB;
+  --surface:#FFFFFF;
+  --card:#FFFFFF;
+  --line:rgba(20,12,40,0.10);
+  --text:#241C3D;
+  --muted:#6E6589;
+  --purple:#8B5CF6;
+  --neon:#7C3AED;
+  --pink:#F94DAB;
+  --grad:linear-gradient(135deg, #F94DAB, #8B5CF6);
+  --glow:0 0 10px rgba(124,58,237,0.30);
+}
+html.light body{
+  background:
+    radial-gradient(1000px 480px at 50% -10%, rgba(167,139,250,0.22), transparent 62%),
+    radial-gradient(760px 480px at 100% 2%, rgba(249,77,171,0.10), transparent 55%),
+    var(--bg);
+}
+/* 라이트 : 카드 그림자/호버를 밝은 톤에 맞게 부드럽게 */
+html.light #section01 .board{box-shadow: 0 10px 26px rgba(139,92,246,0.15);}
+html.light #section01 .board ul li a:hover{background: rgba(139,92,246,0.07);}
+html.light #section02 .content li{box-shadow: 0 10px 26px rgba(139,92,246,0.12);}
+html.light #section02 .content li:hover{box-shadow: 0 18px 40px rgba(139,92,246,0.25);}
+/* 라이트 : 서브페이지 히어로 */
+html.light #hero_sub{background: linear-gradient(135deg, #efe7ff, #f7ddef);}
+
 /* reset */
 * {margin: 0; padding: 0;}
 li {list-style: none;}
@@ -56,8 +84,13 @@ header .topset .search_box:hover {background: var(--purple); color: #fff; border
 header .topset .search_box .material-symbols-outlined {font-size: 20px;}
 header .topset .search_box .search_txt {white-space: nowrap;}
 
-header .topset .login_box {font-size: 15px;}
+header .topset .login_box {font-size: 15px; display: flex; align-items: center; gap: 8px;}
 header .topset .login_box .login {display: flex; justify-content: end;}
+
+/* 라이트/다크 테마 토글 버튼 */
+.theme-toggle {display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex-shrink: 0; padding: 0; border: none; background: transparent; color: var(--neon); cursor: pointer; border-radius: 50%; transition: 0.25s;}
+.theme-toggle:hover {background: rgba(139,92,246,0.15);}
+.theme-toggle .material-symbols-outlined {font-size: 22px;}
 header .topset .login_box .logout {display: none;}
 header .topset .login_box a {display: inline-flex; align-items: center; gap: 5px; padding: 16px 10px; color: var(--muted); transition: 0.3s;}
 header .topset .login_box a .material-symbols-outlined {font-size: 19px; color: var(--neon); transition: 0.3s;}
@@ -272,7 +305,7 @@ footer .footlink a:hover {color: var(--neon);}
   header nav .topset {display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 0 0 14px 0; border-bottom: 1px solid var(--line);}
   header nav .topset .search_box {width: 100%; justify-content: flex-start; font-size: 14px; padding: 12px 16px; box-sizing: border-box; margin-bottom: 6px;}
   header nav .topset .search_box .material-symbols-outlined {font-size: 20px;}
-  header nav .topset .login_box {font-size: 14px;}
+  header nav .topset .login_box {font-size: 14px; flex-direction: column; align-items: flex-start; gap: 4px;}
   header nav .topset .login_box .login {flex-direction: column; align-items: stretch; justify-content: flex-start;}
   header nav .topset .login_box a {padding: 12px 6px; gap: 8px;}
   header nav .topset .login_box a .material-symbols-outlined {font-size: 19px;}
@@ -422,5 +455,11 @@ footer .footlink a:hover {color: var(--neon);}
   .bottom-nav a em {font-style: normal; font-size: 10px; font-weight: 600;}
   .bottom-nav a.active {color: var(--neon); text-shadow: var(--glow);}
   .bottom-nav a.active .material-symbols-outlined {font-variation-settings: 'FILL' 1; filter: drop-shadow(0 0 8px rgba(183,148,255,0.7));}
+
+  /* ===== 라이트 모드 : 모바일 글래스 요소(헤더/드로어/하단탭) 밝게 ===== */
+  html.light header {background: rgba(255,255,255,0.72); border-bottom: 1px solid var(--line);}
+  html.light header nav {background: #ffffff; box-shadow: -8px 0 30px rgba(80,60,140,0.18);}
+  html.light .nav-backdrop {background: rgba(40,28,70,0.35);}
+  html.light .bottom-nav {background: rgba(255,255,255,0.88); border-top: 1px solid var(--line); box-shadow: 0 -6px 22px rgba(139,92,246,0.12);}
 
 }

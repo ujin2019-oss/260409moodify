@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css?v=20260611b">
+    <script>(function(){try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light');}}catch(e){}})();</script>
+    <link rel="stylesheet" href="css/style.css?v=20260611c">
     <link rel="stylesheet" href="css/font.css">
     <script src="script/action.js"></script> 
 
@@ -24,6 +25,7 @@
             </div>
 
             <div class="login_box">
+                <button type="button" class="theme-toggle" aria-label="라이트/다크 모드 전환"><span class="material-symbols-outlined">light_mode</span></button>
                 <div class="login">
                     <a href="#section04"><span class="material-symbols-outlined">login</span>로그인</a>
                     <a href="#"><span class="material-symbols-outlined">person_add</span>회원가입</a>
