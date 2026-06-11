@@ -19,9 +19,11 @@ hr {border: 0 /*none*/; }
 
 
 header {}
-/* 모바일 전용 햄버거 버튼/모달 백드롭 : PC에서는 숨김 (모바일 미디어쿼리에서만 노출) */
+/* 모바일 전용 요소 : PC에서는 모두 숨김 (모바일 미디어쿼리에서만 노출) */
 .nav-toggle {display: none;}
 .nav-backdrop {display: none;}
+.mini-player {display: none;}      /* 모바일 하단 미니 플레이어 바 */
+.bottom-nav {display: none;}       /* 모바일 앱 스타일 하단 탭바 */
 header .topset {display: flex; justify-content: space-between; align-items: center;}
 
 /* 검색 영역 : 아이콘 + 텍스트 pill 형태 */
@@ -218,14 +220,17 @@ footer .footlink a {color: #fff; font-size: 14px; font-weight: bold; }
    =================================================================== */
 @media (max-width: 768px) {
 
-  /* ---------- 공통 : 가로 스크롤 방지 / 이미지 오버플로 방지 ---------- */
-  body {overflow-x: hidden;}
+  /* ---------- 공통 : 가로 스크롤 방지 / 하단바 공간 확보 ---------- */
+  body {overflow-x: hidden; padding-bottom: 140px;}   /* 하단 미니플레이어+탭바 높이만큼 여백 */
   .container {max-width: 100%; padding-left: 16px; padding-right: 16px; box-sizing: border-box;}
   .container img {max-width: 100%; height: auto;}
 
-  /* ---------- 헤더 : 상단엔 로고 + 햄버거만 노출 ---------- */
+  /* ---------- 헤더 : 글래스모피즘 + 스티키 (로고 + 햄버거만 노출) ---------- */
   /* 햄버거 버튼(absolute, 높이 44px)이 히어로와 겹치지 않도록 최소 높이 + 하단 여백 확보 */
-  header {position: relative; box-sizing: border-box; min-height: 66px; padding-bottom: 16px;}
+  header {position: sticky; top: 0; z-index: 100; box-sizing: border-box; min-height: 66px; padding-bottom: 16px;
+          background: rgba(255,255,255,0.72);
+          -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(139,92,246,0.12);}
   body.no-scroll {overflow: hidden;}              /* 드로어 열렸을 때 배경 스크롤 잠금 */
 
   header h1 {margin-top: 14px;}
@@ -347,5 +352,60 @@ footer .footlink a {color: #fff; font-size: 14px; font-weight: bold; }
   .content_box .content li {width: 100%; flex-basis: 100%;}
   .content_box .content li ul li {font-size: 15px; line-height: 26px;}
   .content_box .content li ul li::before {top: 11px;}
+
+  /* ================= 세련된 카드 UI (둥근 모서리 + 부드러운 그림자 + 터치 인터랙션) ================= */
+  #section01 .board,
+  #section02 .content li,
+  #section03 .content li,
+  #section04 .content li {border-radius: 16px; transition: transform .25s ease, box-shadow .25s ease;}
+
+  /* AI 추천 리스트 카드 : 테두리 대신 은은한 그림자, 상단 그라데이션 모서리 둥글게 */
+  #section01 .board {box-shadow: 0 10px 28px rgba(139,92,246,0.14); overflow: hidden;}
+
+  /* 감성 플레이리스트 카드 : 불필요한 테두리 제거 → 미니멀 + 그림자 */
+  #section02 .content li {border: none; outline: none; box-shadow: 0 10px 28px rgba(139,92,246,0.14);}
+
+  /* DJ 카드 / 레포트 카드 : 부드러운 그림자 */
+  #section03 .content li {box-shadow: 0 12px 30px rgba(139,92,246,0.22);}
+  #section04 .content li {box-shadow: 0 12px 30px rgba(139,92,246,0.22);}
+
+  /* 터치 시 살짝 눌리는 인터랙션 */
+  #section01 .board:active,
+  #section02 .content li:active,
+  #section03 .content li:active,
+  #section04 .content li:active {transform: scale(0.97); box-shadow: 0 6px 16px rgba(139,92,246,0.18);}
+
+  /* ================= 모바일 하단 고정 미니 플레이어 바 ================= */
+  .mini-player {display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    position: fixed; left: 10px; right: 10px; bottom: 66px; z-index: 90;
+    padding: 8px 12px; border-radius: 18px; color: #fff;
+    background: rgba(46,26,74,0.82);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    box-shadow: 0 12px 34px rgba(0,0,0,0.30);}
+  .mini-player .mp-info {display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;}
+  .mini-player .mp-info img {width: 44px; height: 44px; border-radius: 12px; object-fit: cover; flex-shrink: 0;}
+  .mini-player .mp-text {min-width: 0;}
+  .mini-player .mp-text strong {display: block; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+  .mini-player .mp-text span {font-size: 11px; color: rgba(255,255,255,0.7);}
+  .mini-player .mp-controls {display: flex; align-items: center; gap: 2px; flex-shrink: 0;}
+  .mini-player .mp-controls button {background: none; border: none; color: #fff; padding: 4px; display: flex; align-items: center; cursor: pointer;}
+  .mini-player .mp-controls .material-symbols-outlined {font-size: 26px;}
+  .mini-player .mp-controls .mp-play {width: 40px; height: 40px; justify-content: center; border-radius: 50%;
+    background: linear-gradient(135deg, #F94DAB, #8B5CF6); box-shadow: 0 4px 12px rgba(249,77,171,0.45);}
+  .mini-player .mp-controls .mp-play .material-symbols-outlined {font-size: 26px;}
+
+  /* ================= 모바일 앱 스타일 하단 탭 내비게이션 ================= */
+  .bottom-nav {display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+    padding: 7px 4px calc(7px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,0.85);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(139,92,246,0.15);
+    box-shadow: 0 -6px 22px rgba(139,92,246,0.12);}
+  .bottom-nav a {flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 4px 0; color: #a99cc6;}
+  .bottom-nav a .material-symbols-outlined {font-size: 25px;}
+  .bottom-nav a em {font-style: normal; font-size: 10px; font-weight: 600;}
+  .bottom-nav a.active {color: #8B5CF6;}
+  .bottom-nav a.active .material-symbols-outlined {font-variation-settings: 'FILL' 1;}
 
 }
