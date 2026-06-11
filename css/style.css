@@ -278,9 +278,11 @@ footer .footlink a:hover {color: var(--neon);}
   /* ---------- 헤더 : 글래스모피즘 + 스티키 (로고 + 햄버거 한 줄 정렬) ---------- */
   header {position: sticky; top: 0; z-index: 100; box-sizing: border-box;
           display: flex; align-items: center; justify-content: center; min-height: 60px; padding: 6px 16px;
-          background: rgba(16,10,31,0.72);
-          -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
           border-bottom: 1px solid var(--line);}
+  /* 글래스 블러는 ::before로 분리 → 헤더가 fixed 드로어를 가두지 않게(모달 잘림 방지) */
+  header::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;
+          background: rgba(16,10,31,0.72);
+          -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);}
   body.no-scroll {overflow: hidden;}              /* 드로어 열렸을 때 배경 스크롤 잠금 */
 
   header h1 {margin: 0;}
@@ -457,7 +459,8 @@ footer .footlink a:hover {color: var(--neon);}
   .bottom-nav a.active .material-symbols-outlined {font-variation-settings: 'FILL' 1; filter: drop-shadow(0 0 8px rgba(183,148,255,0.7));}
 
   /* ===== 라이트 모드 : 모바일 글래스 요소(헤더/드로어/하단탭) 밝게 ===== */
-  html.light header {background: rgba(255,255,255,0.72); border-bottom: 1px solid var(--line);}
+  html.light header {border-bottom: 1px solid var(--line);}
+  html.light header::before {background: rgba(255,255,255,0.72);}
   html.light header nav {background: #ffffff; box-shadow: -8px 0 30px rgba(80,60,140,0.18);}
   html.light .nav-backdrop {background: rgba(40,28,70,0.35);}
   html.light .bottom-nav {background: rgba(255,255,255,0.88); border-top: 1px solid var(--line); box-shadow: 0 -6px 22px rgba(139,92,246,0.12);}
