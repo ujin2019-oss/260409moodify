@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260611b">
     <link rel="stylesheet" href="css/font.css">
     <script src="script/action.js"></script> 
 
@@ -190,17 +190,24 @@
 
     <!-- 모바일 전용 : 하단 미니 플레이어 바 (PC에서는 숨김) -->
     <div class="mini-player">
-        <div class="mp-info">
-            <img src="images/sec2_img1.png" alt="앨범 커버">
-            <div class="mp-text">
-                <strong>사랑하게 될거야</strong>
-                <span>방탄소년단</span>
+        <div class="mp-top">
+            <div class="mp-info">
+                <img src="images/hero_bg01.jpg" alt="앨범 커버">
+                <div class="mp-text">
+                    <strong>사랑하게 될거야</strong>
+                    <span>방탄소년단 · 감성 플레이리스트</span>
+                </div>
+            </div>
+            <div class="mp-controls">
+                <button type="button" aria-label="이전 곡"><span class="material-symbols-outlined">skip_previous</span></button>
+                <button type="button" class="mp-play" aria-label="재생"><span class="material-symbols-outlined">play_arrow</span></button>
+                <button type="button" aria-label="다음 곡"><span class="material-symbols-outlined">skip_next</span></button>
             </div>
         </div>
-        <div class="mp-controls">
-            <button type="button" aria-label="이전 곡"><span class="material-symbols-outlined">skip_previous</span></button>
-            <button type="button" class="mp-play" aria-label="재생"><span class="material-symbols-outlined">play_arrow</span></button>
-            <button type="button" aria-label="다음 곡"><span class="material-symbols-outlined">skip_next</span></button>
+        <div class="mp-progress">
+            <span class="mp-time">0:48</span>
+            <div class="mp-bar"><i></i></div>
+            <span class="mp-time">3:12</span>
         </div>
     </div>
 
