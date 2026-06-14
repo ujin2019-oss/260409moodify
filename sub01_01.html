@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>(function(){try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light');}}catch(e){}})();</script>
-    <link rel="stylesheet" href="css/style.css?v=20260611d">
+    <script>(function(){try{if(localStorage.getItem('theme')!=='dark'){document.documentElement.classList.add('light');}}catch(e){document.documentElement.classList.add('light');}})();</script>
+    <link rel="stylesheet" href="css/style.css?v=20260615d">
     <link rel="stylesheet" href="css/font.css">
     <script src="script/action.js"></script> 
 
@@ -18,8 +18,8 @@
     <header class="container">
         <div class="topset">
             <div class="search_box">
-                <span class="material-symbols-outlined">search</span>
-                <span class="search_txt">원하는 곡을 검색해보세요</span>
+                <label for="search" class="icon"><span class="material-symbols-outlined">search</span></label>
+                <input type="text" id="search" placeholder="원하는 곡을 검색해보세요">
             </div>
 
             <div class="login_box">
@@ -39,36 +39,49 @@
 
         <h1><a href="index.html"><img src="images/logo.png" alt="무디파이로고"></a></h1>
 
+        <button type="button" class="theme-toggle theme-toggle-mobile" aria-label="라이트/다크 모드 전환"><span class="material-symbols-outlined">light_mode</span></button>
+
         <button type="button" class="nav-toggle" aria-label="메뉴 열기">
             <span class="material-symbols-outlined">menu</span>
         </button>
 
         <nav>
             <ul class="gnb">
-                <li class="menu1">
-                    <a href="sub01_01.html">무디소개</a>
+                <li class="menu">
+                    <a href="sub01_01.html">무디탐색</a>
                     <ul class="lnb"><!-- local navigation bar-->
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
+                        <li><a href="sub01_01.html">탐색하기</a></li>
                     </ul>
                 </li>
-                <li>
-                <a href="#">AI추천</a>
-                </li>
-                <li>
-                    <a href="#">무디탐색</a>
-                    <ul class="lnb"><!-- local navigation bar-->
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
+                <li class="menu">
+                    <a href="#">AI추천</a>
+                    <ul class="lnb">
+                        <li><a href="#">AI 분석</a></li>
+                        <li><a href="#">AI 추천 플리</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">무디등록</a>
+                <li class="menu">
+                    <a href="#">최신음악</a>
+                    <ul class="lnb">
+                        <li><a href="#">최신앨범</a></li>
+                        <li><a href="#">최신음악</a></li>
+                    </ul>
                 </li>
-                <li>
+                <li class="menu">
+                    <a href="#">인기음악</a>
+                    <ul class="lnb">
+                        <li><a href="#">인기TOP100</a></li>
+                        <li><a href="#">주간TOP100</a></li>
+                        <li><a href="#">실시간 차트</a></li>
+                    </ul>
+                </li>
+                <li class="menu">
                     <a href="#">마이뮤직</a>
+                    <ul class="lnb">
+                        <li><a href="#">최근 재생한 음악</a></li>
+                        <li><a href="#">나의 플레이리스트</a></li>
+                        <li><a href="#">좋아요</a></li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -82,89 +95,30 @@
 
 
 
-    <div id="hero_sub"></div>
+    <div id="hero_sub">
+        <div class="textbox">
+            <div class="text1">무디탐색</div>
+            <strong>나만을 위한 음악 비서,<br>무디파이가 취향을 발견해드려요</strong>
+            <p>지금까지 감상한 음악의 장르/패턴/취향이 자동 분석되어<br>세상에 단 하나 밖에 없는 내 음악 취향을 포착하게 될거에요</p>
+        </div>
+    </div>
 
+    <nav class="sub_nav">
+        <ul>
+            <li class="active"><a href="#">MY moodify</a></li>
+            <li><a href="#">오늘의 무드 찾기</a></li>
+        </ul>
+    </nav>
 
-
-
-    <div id="section_box_sub">
-        <nav>
-            <ul class="snb">
-                        <li class="now"><a href="#">SUBMENU1</a></li>
-                        <li><a href="#">SUBMENU2</a></li>
-                        <li><a href="#">SUBMENU3</a></li>
-                        <li><a href="#">SUBMENU4</a></li>
-                        <li><a href="#">SUBMENU5</a></li>
-            </ul>
-        </nav>
-        <div class="container">
-        <section class="content_sub">
-            <h2>
-                <strong>무디소개</strong>
-                <hr>
-                <span class="line"></span>
-                <span class="text">사랑과 정성으로 준비된 무디AI 추천 음악이에오... 지금 바로 감상해보세요♥</span>
-            </h2>
-
-            <div class="content_box">
-                <ul class="content">
-                    <li>
-                        <figure><img src="http://picsum.photos/500/400" alt=""></figure>
-                        <h3>입체음향으로 즐기는 무디파이의 서라운드</h3>
-                        <ul>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용내용 내용 내용 내용 내용내용 내용 내용 내용 내용내용 내용 내용 내용 내용내용 내용 내용 내용 내용내용 내용 내용 내용 내용</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <figure><img src="http://picsum.photos/500/400" alt=""></figure>
-                        <h3>입체음향으로 즐기는 무디파이의 서라운드</h3>
-                        <ul>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <figure><img src="http://picsum.photos/500/400" alt=""></figure>
-                        <h3>입체음향으로 즐기는 무디파이의 서라운드</h3>
-                        <ul>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <figure><img src="http://picsum.photos/500/400" alt=""></figure>
-                        <h3>입체음향으로 즐기는 무디파이의 서라운드</h3>
-                        <ul>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <figure><img src="http://picsum.photos/500/400" alt=""></figure>
-                        <h3>입체음향으로 즐기는 무디파이의 서라운드</h3>
-                        <ul>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <figure><img src="http://picsum.photos/500/400" alt=""></figure>
-                        <h3>입체음향으로 즐기는 무디파이의 서라운드</h3>
-                        <ul>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                            <li>내용 내용 내용 내용 내용</li>
-                        </ul>
-                    </li>
-                </ul>
+    <div id="sectionbox_sub">
+        <h2>MY moodify
+            <p>무디파이를 찾아주시는 이용자만을 위한 혜택,<br>나에게 어울리는 음악을 분석해서 선물해드릴게요.</p>
+        </h2>
+        <div class="content_sub">
+            <div class="text_box">
+                <span>지금 로그인 후에<br>서비스 이용 가능합니다.</span>
+                <a href="#" class="btn1">moodify 로그인하러 가기<img src="images/sec3_arrow.png" alt=""></a>
             </div>
-        </section>
         </div>
     </div>
 

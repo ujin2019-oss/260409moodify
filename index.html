@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>(function(){try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light');}}catch(e){}})();</script>
-    <link rel="stylesheet" href="css/style.css?v=20260611d">
+    <script>(function(){try{if(localStorage.getItem('theme')!=='dark'){document.documentElement.classList.add('light');}}catch(e){document.documentElement.classList.add('light');}})();</script>
+    <link rel="stylesheet" href="css/style.css?v=20260615d">
     <link rel="stylesheet" href="css/font.css">
     <script src="script/action.js"></script> 
 
@@ -20,8 +20,8 @@
     <header class="container">
         <div class="topset">
             <div class="search_box">
-                <span class="material-symbols-outlined">search</span>
-                <span class="search_txt">원하는 곡을 검색해보세요</span>
+                <label for="search" class="icon"><span class="material-symbols-outlined">search</span></label>
+                <input type="text" id="search" placeholder="원하는 곡을 검색해보세요">
             </div>
 
             <div class="login_box">
@@ -41,36 +41,49 @@
 
         <h1><a href="index.html"><img src="images/logo.png" alt="무디파이로고"></a></h1>
 
+        <button type="button" class="theme-toggle theme-toggle-mobile" aria-label="라이트/다크 모드 전환"><span class="material-symbols-outlined">light_mode</span></button>
+
         <button type="button" class="nav-toggle" aria-label="메뉴 열기">
             <span class="material-symbols-outlined">menu</span>
         </button>
 
         <nav>
             <ul class="gnb">
-                <li class="menu1">
-                    <a href="sub01_01.html">무디소개</a>
+                <li class="menu">
+                    <a href="sub01_01.html">무디탐색</a>
                     <ul class="lnb"><!-- local navigation bar-->
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
+                        <li><a href="sub01_01.html">탐색하기</a></li>
                     </ul>
                 </li>
-                <li>
-                <a href="#">AI추천</a>
-                </li>
-                <li>
-                    <a href="#">무디탐색</a>
-                    <ul class="lnb"><!-- local navigation bar-->
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
-                        <li><a href="#">2차카테고리</a></li>
+                <li class="menu">
+                    <a href="#">AI추천</a>
+                    <ul class="lnb">
+                        <li><a href="#">AI 분석</a></li>
+                        <li><a href="#">AI 추천 플리</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">무디등록</a>
+                <li class="menu">
+                    <a href="#">최신음악</a>
+                    <ul class="lnb">
+                        <li><a href="#">최신앨범</a></li>
+                        <li><a href="#">최신음악</a></li>
+                    </ul>
                 </li>
-                <li>
+                <li class="menu">
+                    <a href="#">인기음악</a>
+                    <ul class="lnb">
+                        <li><a href="#">인기TOP100</a></li>
+                        <li><a href="#">주간TOP100</a></li>
+                        <li><a href="#">실시간 차트</a></li>
+                    </ul>
+                </li>
+                <li class="menu">
                     <a href="#">마이뮤직</a>
+                    <ul class="lnb">
+                        <li><a href="#">최근 재생한 음악</a></li>
+                        <li><a href="#">나의 플레이리스트</a></li>
+                        <li><a href="#">좋아요</a></li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -123,16 +136,16 @@
                     </div></div>
         <div class="swiper-slide">                <img src="images/hero_bg02.jpg" alt="">
                     <div class="textbox">
-                    <div class="text1">오늘의 추천</div>
-                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
-                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <div class="text1">최신앨범</div>
+                    <strong>최신음악도 취향에 맞게<br>내가 좋아할 새로운 곡을 탐색해요</strong>
+                    <p>요즘 나오는 곡도 취향·감정·상황을 반영하여 음악 감상할 수 있습니다</p>
                     <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
                     </div></div>
         <div class="swiper-slide">                <img src="images/hero_bg03.jpg" alt="">
                     <div class="textbox">
-                    <div class="text1">오늘의 추천</div>
-                    <strong>지금 내가 듣고 싶었던 음악,<br>무디파이에서 바로 들어보세요</strong>
-                    <p>취향·감정·상황을 분석해 플레이리스트를 만들어드립니다</p>
+                    <div class="text1">인기차트</div>
+                    <strong>지금, 유행하는 곡도<br>실시간으로 분석해 추천해줘요</strong>
+                    <p>인기차트 안에서도 내 취향과 감성을 담긴 음악을 탐색해보세요</p>
                     <a href="#"><img src="images/hero_bticon.png" alt="">지금 바로 감상하기</a>
                     </div></div>
     </div>
@@ -154,94 +167,94 @@
                     <ul>
                         <li><a href="#">
                             <div class="number">1</div>
-                            <div class="title">사랑하게될거야</div>
+                            <div class="title">SWIM</div>
                             <div class="singer">방탄소년단</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">2</div>
                             <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="singer">한로로</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">3</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">타임캡슐</div>
+                            <div class="singer">다비치</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">4</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">너에게 닿기를</div>
+                            <div class="singer">10cm</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">5</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">청춘만화</div>
+                            <div class="singer">이무진</div>
                         </a></li>
                     </ul>
                 </div>
                 <div class="board">
                     <div class="tit"><img src="images/2-2icon.png" alt="">
-                    <span>AI 분석추천 list</span>
+                    <span>내가 좋아할 최신 음악</span>
                     <a href="#" class="btm_more"> <img src="images/2-0icon.png" alt=""></a>
                     </div>
                     <ul>
                         <li><a href="#">
                             <div class="number">1</div>
-                            <div class="title">사랑하게될거야</div>
+                            <div class="title">SWIM</div>
                             <div class="singer">방탄소년단</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">2</div>
                             <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="singer">한로로</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">3</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">타임캡슐</div>
+                            <div class="singer">다비치</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">4</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">너에게 닿기를</div>
+                            <div class="singer">10cm</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">5</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">청춘만화</div>
+                            <div class="singer">이무진</div>
                         </a></li>
                         </ul>
                     </div>
                 <div class="board">
                     <div class="tit"><img src="images/2-3icon.png" alt="">
-                    <span>AI 분석추천 list</span>
+                    <span>어제 감상한 플리 믹스</span>
                     <a href="#" class="btm_more"> <img src="images/2-0icon.png" alt=""></a>
                     </div>
                     <ul>
                         <li><a href="#">
                             <div class="number">1</div>
-                            <div class="title">사랑하게될거야</div>
+                            <div class="title">SWIM</div>
                             <div class="singer">방탄소년단</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">2</div>
                             <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="singer">한로로</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">3</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">타임캡슐</div>
+                            <div class="singer">다비치</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">4</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">너에게 닿기를</div>
+                            <div class="singer">10cm</div>
                         </a></li>
                             <li><a href="#">
                             <div class="number">5</div>
-                            <div class="title">사랑하게될거야</div>
-                            <div class="singer">방탄소년단</div>
+                            <div class="title">청춘만화</div>
+                            <div class="singer">이무진</div>
                         </a></li>
                     </ul>
                 </div>
@@ -258,47 +271,47 @@
                         <a href="#">
                             <h3>행복</h3>
                             <img src="images/sec2_img1.png" alt="" class="sec2_img1">
-                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <p>기분좋은 하루<br>더 빛나고 싶을때</p>
                             <span class="material-symbols-outlined">arrow_forward_ios</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <h3>행복</h3>
+                            <h3>우울</h3>
                             <img src="images/sec2_img2.png" alt="" class="sec2_img1">
-                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <p>마음이 무거운 날<br>기대고 싶을 때</p>
                             <span class="material-symbols-outlined">arrow_forward_ios</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <h3>행복</h3>
+                            <h3>차분</h3>
                             <img src="images/sec2_img3.png" alt="" class="sec2_img1">
-                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <p>복잡한 생각을<br>가라앉히고 싶을 때</p>
                             <span class="material-symbols-outlined">arrow_forward_ios</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <h3>행복</h3>
+                            <h3>집중</h3>
                             <img src="images/sec2_img4.png" alt="" class="sec2_img1">
-                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <p>잡생각은 잠시 OFF<br>몰입이 필요할때</p>
                             <span class="material-symbols-outlined">arrow_forward_ios</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <h3>행복</h3>
+                            <h3>휴식</h3>
                             <img src="images/sec2_img5.png" alt="" class="sec2_img1">
-                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <p>아무것도 하지 않고<br>편안히 쉬고 싶을 때</p>
                             <span class="material-symbols-outlined">arrow_forward_ios</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <h3>행복</h3>
+                            <h3>에너지</h3>
                             <img src="images/sec2_img6.png" alt="" class="sec2_img1">
-                            <p>기분좋은 하루<br>더 빛나고 싶을 때</p>
+                            <p>리듬에 맞춰<br>텐션 올리고 싶을때</p>
                             <span class="material-symbols-outlined">arrow_forward_ios</span>
                         </a>
                     </li>

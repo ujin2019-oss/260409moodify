@@ -45,7 +45,8 @@ html.light #section01 .board ul li a:hover{background: rgba(139,92,246,0.07);}
 html.light #section02 .content li{box-shadow: 0 10px 26px rgba(139,92,246,0.12);}
 html.light #section02 .content li:hover{box-shadow: 0 18px 40px rgba(139,92,246,0.25);}
 /* 라이트 : 서브페이지 히어로 */
-html.light #hero_sub{background: linear-gradient(135deg, #efe7ff, #f7ddef);}
+html.light #hero_sub{background: linear-gradient(135deg, #7c3aed, #a855f7);}
+html.light #hero_sub .textbox .text1{color: #fff;}
 
 /* reset */
 * {margin: 0; padding: 0;}
@@ -78,11 +79,17 @@ header {}
 
 header .topset {display: flex; justify-content: space-between; align-items: center;}
 
-/* 검색 영역 : 아이콘 + 텍스트 pill 형태 */
-header .topset .search_box {display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border: 1px solid rgba(167,139,250,0.45); border-radius: 50px; color: var(--neon); font-size: 14px; cursor: text; transition: 0.3s;}
-header .topset .search_box:hover {background: var(--purple); color: #fff; border-color: var(--purple);}
-header .topset .search_box .material-symbols-outlined {font-size: 20px;}
-header .topset .search_box .search_txt {white-space: nowrap;}
+/* 검색 영역 : 그라데이션 pill + 흰색 input (아이콘 오버레이) */
+header .topset .search_box {width: 200px; height: 34px; border-radius: 20px; background: linear-gradient(90deg, #F94DAB, #8B5CF6);
+  display: flex; align-items: center; padding: 0 2px; position: relative; box-sizing: border-box; box-shadow: 0 2px 6px rgba(0,0,0,0.12);}
+header .topset .search_box .icon {position: absolute; left: 11px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; z-index: 2; cursor: text;}
+header .topset .search_box .icon .material-symbols-outlined {font-size: 20px; color: #8B5CF6;}
+header .topset .search_box input {flex: 1; min-width: 0; height: 30px; border: none; outline: none; background: #110b1c;
+  border-radius: 20px; padding: 0 12px 0 36px; box-sizing: border-box; font-size: 14px; color: var(--text); font-family: inherit;}
+header .topset .search_box input::placeholder {color: var(--muted);}
+/* 라이트 모드 : 검색 input은 흰색 유지 */
+html.light header .topset .search_box input {background: #fff; color: #333;}
+html.light header .topset .search_box input::placeholder {color: #9b8fb5;}
 
 header .topset .login_box {font-size: 15px; display: flex; align-items: center; gap: 8px;}
 header .topset .login_box .login {display: flex; justify-content: end;}
@@ -91,6 +98,7 @@ header .topset .login_box .login {display: flex; justify-content: end;}
 .theme-toggle {display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex-shrink: 0; padding: 0; border: none; background: transparent; color: var(--neon); cursor: pointer; border-radius: 50%; transition: 0.25s;}
 .theme-toggle:hover {background: rgba(139,92,246,0.15);}
 .theme-toggle .material-symbols-outlined {font-size: 22px;}
+.theme-toggle-mobile {display: none;}   /* PC에서는 숨김(상단 login_box 토글 사용), 모바일에서만 노출 */
 header .topset .login_box .logout {display: none;}
 header .topset .login_box a {display: inline-flex; align-items: center; gap: 5px; padding: 16px 10px; color: var(--muted); transition: 0.3s;}
 header .topset .login_box a .material-symbols-outlined {font-size: 19px; color: var(--neon); transition: 0.3s;}
@@ -100,17 +108,22 @@ header .topset .login_box a:hover .material-symbols-outlined {color: var(--pink)
 header h1 {margin: 0 auto; text-align: center;}
 header nav {margin-top: 34px;}
 header nav .gnb {display: flex;}
-header nav .gnb > li {font-size: 18px; flex-grow: 1; display: flex; position: relative;}
-header nav .gnb > li > a {flex-grow: 1; text-align: center; padding: 13px 0; transition: 0.3s;}
+header nav .gnb > li {font-size: 18px; flex-grow: 1; position: relative; transition: 0.3s;}
+header nav .gnb > li > a {display: block; text-align: center; padding: 13px 0; color: var(--text); position: relative; transition: 0.3s;}
+header nav .gnb > li > a:hover {color: var(--neon);}
+/* 호버 시 하단 보라 언더라인이 가운데에서 양옆으로 확장 */
+header nav .gnb > li > a::after {content: ""; position: absolute; left: 50%; bottom: 0; width: 0; height: 3px;
+  background: var(--purple); transform: translateX(-50%); transition: width 0.3s;}
+header nav .gnb > li > a:hover::after {width: 100%;}
 
-header nav .gnb li .lnb {position: absolute; z-index: 3; width: 100%; top: 100%; background-color: var(--purple); transition: 0.5s; opacity: 0; visibility: hidden;}
-header nav .gnb li:hover .lnb {opacity: 1; visibility: visible;}
-header nav .gnb .menu1:hover .lnb {height: 90px;}
-header nav .gnb li .lnb li {font-size: 18px;}
-header nav .gnb li .lnb li a {color: #fff; padding: 13px 0; display: block; text-align: center;}
-
-header nav .gnb li:hover {background: #6c2dc5; border-radius: 8px;}
-header nav .gnb li:hover a {color: #fff;}
+/* 2차 메뉴(LNB) 드롭다운 : 호버 시 부드럽게 나타남 */
+header nav .gnb .lnb {position: absolute; z-index: 3; top: 100%; left: 0; width: 100%; text-align: center;
+  opacity: 0; visibility: hidden; transition: 0.4s; border-radius: 0 0 8px 8px; overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);}
+header nav .gnb .lnb li {font-size: 16px; background: var(--card); border-top: 1px solid var(--line);}
+header nav .gnb .lnb li a {display: block; padding: 13px 0; color: var(--text); transition: 0.2s;}
+header nav .gnb .lnb li a:hover {color: #fff; background: var(--purple);}
+header nav .gnb > li:hover .lnb {opacity: 1; visibility: visible;}
 
 
 /* ---------- 히어로 (Swiper) ---------- */
@@ -139,29 +152,29 @@ header nav .gnb li:hover a {color: #fff;}
 .mySwiper .swiper-pagination-bullet-active {background: #fff;}
 .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {color: #fff;}
 
-/* 히어로 하단 페이드 : 슬라이드가 다크 배경으로 자연스럽게 녹아들도록 (텍스트는 위 레이어) */
+/* 히어로 : 텍스트는 위 레이어 (하단 그라데이션 페이드 제거) */
 .mySwiper .swiper-slide {position: relative;}
 .mySwiper .textbox {z-index: 2;}
-.mySwiper .swiper-slide::after {content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 55%; z-index: 1; pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(8,4,15,0.55) 62%, var(--bg) 100%);}
 
 
-/* ---------- section01 : AI 분석추천 리스트 (멀티컬럼 Grid) ---------- */
+/* ---------- section01 : AI 분석추천 리스트 (가로 보드형 플레이리스트) ---------- */
 #section_box .container {padding: 100px 0;}
-#section01 .container {display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;}
-#section01 .board {background: var(--card); border-radius: 16px; overflow: hidden; border: 1px solid var(--line);
-    box-shadow: 0 14px 34px rgba(0,0,0,0.40); transition: transform .3s ease, box-shadow .3s ease;}
-#section01 .board:hover {transform: translateY(-6px); box-shadow: 0 22px 46px rgba(139,92,246,0.30);}
+#section01 .container {display: flex; gap: 36px; padding: 50px 0;}
+#section01 .board {flex-grow: 1; flex-basis: 0; padding-bottom: 15px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 8px; overflow: hidden; box-shadow: 0 10px 26px rgba(0,0,0,0.30); transition: transform .3s ease, box-shadow .3s ease;}
+#section01 .board:hover {transform: translateY(-6px); box-shadow: 0 18px 40px rgba(139,92,246,0.30);}
 
-#section01 .board .tit {font-size: 18px; color: #fff; padding: 14px 30px; background: var(--grad); display: flex; align-items: center; gap: 40px; box-shadow: 0 6px 20px rgba(139,92,246,0.45);}
+#section01 .board .tit {padding: 12px 20px; background: linear-gradient(90deg, #F94DAB, #8B5CF6); font-size: 18px; color: #fff;
+    display: flex; align-items: center; gap: 30px;}
 #section01 .board .tit span {flex-grow: 1;}
+#section01 .board .tit img {flex-shrink: 0;}
 
-#section01 .board ul {padding-bottom: 17px;}
-#section01 .board ul li a {display: flex; padding: 0 30px; font-size: 14px; height: 38px; align-items: center; transition: background .2s;}
-#section01 .board ul li a:hover {background: rgba(255,255,255,0.05);}
-#section01 .board ul li a .number {width: 40px; text-align: center; color: var(--neon); font-weight: 700; text-shadow: var(--glow);}
-#section01 .board ul li a .title {flex-grow: 1; font-weight: 600;}
-#section01 .board ul li a .singer {width: 100px; text-align: center; color: var(--muted);}
+#section01 .board ul {padding-top: 6px;}
+#section01 .board ul li a {display: flex; height: 40px; align-items: center; font-size: 14px; transition: background .2s;}
+#section01 .board ul li a:hover {background: rgba(139,92,246,0.10);}
+#section01 .board ul li a .number {width: 70px; text-align: center; color: var(--purple); font-weight: 700;}
+#section01 .board ul li a .title {flex-grow: 1; font-weight: 600; color: var(--text);}
+#section01 .board ul li a .singer {width: 120px; text-align: center; color: var(--muted);}
 
 
 /* ---------- section02 : 감성 플레이리스트 (Grid 카드) ---------- */
@@ -234,32 +247,36 @@ footer .footlink a:hover {color: var(--neon);}
 /* ===================================================================
    서브페이지 (sub01_01.html)
    =================================================================== */
-#hero_sub {height: 300px; background: linear-gradient(135deg, #1a1233, #2a1a4d);}
+/* 서브 히어로 : 배경 이미지 없이 테마 그라데이션 밴드 (텍스트는 변수로 가독성 확보) */
+#hero_sub {height: 380px; display: flex; justify-content: center; align-items: center; text-align: center;
+  background: linear-gradient(135deg, #1a1233, #2a1a4d);}
+#hero_sub .textbox {width: 100%; max-width: 800px; padding: 0 20px; box-sizing: border-box;}
+#hero_sub .textbox .text1 {font-size: 18px; margin-bottom: 24px; display: block; color: var(--neon); font-weight: 600;}
+#hero_sub .textbox strong {font-size: 40px; font-weight: 700; margin-bottom: 19px; display: block; color: #fff;}
+#hero_sub .textbox p {font-size: 20px; display: block; color: rgba(255,255,255,0.82); line-height: 1.6;}
 
-#section_box_sub {background: var(--bg); padding-top: 20px;}
-#section_box_sub .container {padding: 100px 0;}
+/* 서브 탭 내비 (2분할) */
+.sub_nav {width: 100%; padding: 50px 0;}
+.sub_nav ul {width: 420px; max-width: 90%; margin: 0 auto; display: flex;}
+.sub_nav ul li {width: 50%;}
+.sub_nav ul li a {display: block; height: 48px; line-height: 48px; text-align: center; font-size: 18px;
+  border: 1px solid var(--purple); background: var(--card); color: var(--text); transition: 0.25s;}
+.sub_nav ul li + li a {border-left: 0;}
+.sub_nav ul li.active a {background: #B493FF; color: #fff; border-color: #B493FF;}
+.sub_nav ul li a:hover {background: #B493FF; color: #fff; border-color: #B493FF;}
 
-#section_box_sub nav {margin-top: 20px;}
-#section_box_sub nav .snb {padding: 0 165px; background: var(--card); display: flex; justify-content: center; border-radius: 14px; border: 1px solid var(--line);}
-#section_box_sub nav .snb li {font-size: 18px;}
-#section_box_sub nav .snb li a {padding: 13px 20px; display: block; color: var(--muted);}
-#section_box_sub nav .snb li.now a, #section_box_sub nav .snb li:hover a {font-weight: 600; color: var(--text);}
+/* MY moodify 본문 */
+#sectionbox_sub {text-align: center; padding: 0 16px 100px;}
+#sectionbox_sub h2 {font-size: 30px; color: var(--text); margin-bottom: 16px;}
+#sectionbox_sub h2 p {font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 50px; line-height: 1.6;}
 
-.content_sub h2 {display: flex; flex-direction: column; align-items: center;}
-.content_sub strong {font-size: 40px; font-weight: 700; letter-spacing: 0.5em; color: var(--text);}
-.content_sub h2 hr {width: 50%; height: 1px; border-top: 1px dashed var(--line); margin: 20px auto;}
-.content_sub span {font-size: 20px; font-weight: 400; color: var(--neon);}
-
-.content_sub .content_box {margin-top: 50px;}
-.content_sub .content_box .content {display: flex; flex-wrap: wrap; gap: 41px;}
-
-.content_box .content li {width: 26%; flex-grow: 1;}
-.content_box .content li figure img {width: 100%; border-radius: 12px;}
-.content_box .content li h3 {margin: 7px 0; color: var(--text);}
-
-.content_box .content li ul li {border: 1px solid var(--line); width: 100%; font-size: 18px; color: var(--muted); line-height: 30px; position: relative; padding-left: 15px; border-radius: 8px; margin-bottom: 6px;}
-/* ::before 로 bullet */
-.content_box .content li ul li::before {content:''; width: 4px; height: 4px; background: var(--neon); position: absolute; top: 14px; left: 6px;}
+.content_sub {min-height: 440px; max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: center; text-align: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 14px 34px rgba(0,0,0,0.30);}
+.content_sub .text_box {display: flex; flex-direction: column; align-items: center; color: var(--text); padding: 40px 20px;}
+.content_sub .text_box span {font-size: 40px; font-weight: 600; margin-bottom: 41px; line-height: 1.4;}
+.content_sub .text_box .btn1 {background: var(--grad); border: none; color: #fff; font-size: 24px; gap: 30px; box-shadow: 0 10px 26px rgba(139,92,246,0.40);}
+.content_sub .text_box .btn1:hover {transform: translateY(-2px); box-shadow: 0 14px 32px rgba(249,77,171,0.5);}
+.content_sub .text_box .btn1 img {width: 20px; height: auto;}
 
 
 
@@ -292,6 +309,10 @@ footer .footlink a:hover {color: var(--neon);}
   .nav-toggle {display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; right: 8px; transform: translateY(-50%); width: 44px; height: 44px; padding: 0; background: none; border: none; cursor: pointer; z-index: 70;}
   .nav-toggle .material-symbols-outlined {font-size: 30px; color: var(--neon);}
 
+  /* 모바일 헤더 좌측 테마 토글 (햄버거와 대칭) : 드로어 열지 않고 바로 라이트/다크 전환 */
+  .theme-toggle-mobile {display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; left: 8px; transform: translateY(-50%); width: 44px; height: 44px; padding: 0; background: none; border: none; cursor: pointer; z-index: 70; border-radius: 50%;}
+  .theme-toggle-mobile .material-symbols-outlined {font-size: 26px; color: var(--neon);}
+
   /* 모달 백드롭(딤 배경) */
   .nav-backdrop {display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.55); opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease; z-index: 55;}
   .nav-backdrop.open {opacity: 1; visibility: visible;}
@@ -305,8 +326,10 @@ footer .footlink a:hover {color: var(--neon);}
 
   /* 드로어 안: 검색 + 로그인 영역 (JS로 이동됨) */
   header nav .topset {display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 0 0 14px 0; border-bottom: 1px solid var(--line);}
-  header nav .topset .search_box {width: 100%; justify-content: flex-start; font-size: 14px; padding: 12px 16px; box-sizing: border-box; margin-bottom: 6px;}
-  header nav .topset .search_box .material-symbols-outlined {font-size: 20px;}
+  header nav .topset .search_box {width: 100%; height: 42px; padding: 0 3px; margin-bottom: 8px; box-sizing: border-box;}
+  header nav .topset .search_box .icon {left: 13px;}
+  header nav .topset .search_box .icon .material-symbols-outlined {font-size: 20px;}
+  header nav .topset .search_box input {height: 36px; font-size: 14px; padding-left: 38px;}
   header nav .topset .login_box {font-size: 14px; flex-direction: column; align-items: flex-start; gap: 4px;}
   header nav .topset .login_box .login {flex-direction: column; align-items: stretch; justify-content: flex-start;}
   header nav .topset .login_box a {padding: 12px 6px; gap: 8px;}
@@ -397,20 +420,23 @@ footer .footlink a:hover {color: var(--neon);}
   footer .footlink {position: static; width: 100%; margin-top: 18px; gap: 20px;}
 
   /* ===== 서브페이지 (sub01_01.html) ===== */
-  #hero_sub {height: 160px;}
-  #section_box_sub .container {padding: 40px 16px;}
-  #section_box_sub nav .snb {padding: 0; overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch; border-radius: 12px;}
-  #section_box_sub nav .snb li {font-size: 14px; white-space: nowrap;}
-  #section_box_sub nav .snb li a {padding: 12px 14px;}
+  #hero_sub {height: 220px;}
+  #hero_sub .textbox .text1 {font-size: 15px; margin-bottom: 14px;}
+  #hero_sub .textbox strong {font-size: 24px; margin-bottom: 14px;}
+  #hero_sub .textbox p {font-size: 14px;}
 
-  .content_sub strong {font-size: 24px; letter-spacing: 0.2em;}
-  .content_sub h2 hr {width: 80%;}
-  .content_sub span {font-size: 15px; text-align: center;}
-  .content_sub .content_box {margin-top: 30px;}
-  .content_sub .content_box .content {gap: 28px;}
-  .content_box .content li {width: 100%; flex-basis: 100%;}
-  .content_box .content li ul li {font-size: 15px; line-height: 26px;}
-  .content_box .content li ul li::before {top: 11px;}
+  .sub_nav {padding: 28px 16px;}
+  .sub_nav ul {width: 100%; max-width: 360px;}
+  .sub_nav ul li a {height: 44px; line-height: 44px; font-size: 15px;}
+
+  #sectionbox_sub {padding-bottom: 60px;}
+  #sectionbox_sub h2 {font-size: 22px;}
+  #sectionbox_sub h2 p {font-size: 15px; margin-bottom: 30px;}
+
+  .content_sub {min-height: 320px; border-radius: 16px;}
+  .content_sub .text_box {padding: 30px 18px;}
+  .content_sub .text_box span {font-size: 22px; margin-bottom: 28px;}
+  .content_sub .text_box .btn1 {font-size: 16px; gap: 16px; padding: 14px 22px;}
 
   /* ================= 카드 터치 인터랙션 (살짝 눌림) ================= */
   #section01 .board:active,
