@@ -276,7 +276,7 @@ footer .footlink a:hover {color: var(--neon);}
 .content_sub .text_box span {font-size: 40px; font-weight: 600; margin-bottom: 41px; line-height: 1.4;}
 .content_sub .text_box .btn1 {background: var(--grad); border: none; color: #fff; font-size: 24px; gap: 30px; box-shadow: 0 10px 26px rgba(139,92,246,0.40);}
 .content_sub .text_box .btn1:hover {transform: translateY(-2px); box-shadow: 0 14px 32px rgba(249,77,171,0.5);}
-.content_sub .text_box .btn1 img {width: 20px; height: auto;}
+.content_sub .text_box .btn1 img {height: 18px; width: auto;}
 
 
 
@@ -288,7 +288,8 @@ footer .footlink a:hover {color: var(--neon);}
 @media (max-width: 768px) {
 
   /* ---------- 공통 : 가로 스크롤 방지 / 하단바 공간 확보 ---------- */
-  body {overflow-x: hidden; padding-bottom: calc(168px + env(safe-area-inset-bottom));}   /* 하단 미니플레이어(재생바 포함)+탭바 높이 + 노치 안전영역만큼 여백 */
+  /* overflow-x:clip + background-attachment:scroll → 모바일에서 position:fixed(하단탭/미니플레이어)가 스크롤에 휩쓸리지 않고 확실히 고정 */
+  body {overflow-x: clip; background-attachment: scroll; padding-bottom: calc(168px + env(safe-area-inset-bottom));}   /* 하단 미니플레이어(재생바 포함)+탭바 높이 + 노치 안전영역만큼 여백 */
   .container {max-width: 100%; padding-left: 16px; padding-right: 16px; box-sizing: border-box;}
   .container img {max-width: 100%; height: auto;}
 
@@ -433,10 +434,14 @@ footer .footlink a:hover {color: var(--neon);}
   #sectionbox_sub h2 {font-size: 22px;}
   #sectionbox_sub h2 p {font-size: 15px; margin-bottom: 30px; line-height: 1.5;}
 
-  .content_sub {min-height: 320px; border-radius: 16px;}
+  /* 본문 좌우 대칭 보장 : 박스싱 + 가로 오버플로 차단 (패널이 한쪽으로 밀리는 현상 방지) */
+  #hero_sub .textbox, .sub_nav, #sectionbox_sub, footer .container {box-sizing: border-box; max-width: 100%;}
+  #sectionbox_sub {overflow-x: clip;}
+  .content_sub {min-height: 320px; border-radius: 16px; width: 100%; box-sizing: border-box; margin-left: auto; margin-right: auto;}
   .content_sub .text_box {padding: 32px 18px;}
   .content_sub .text_box span {font-size: 22px; margin-bottom: 28px;}
-  .content_sub .text_box .btn1 {font-size: 16px; gap: 16px; padding: 14px 22px;}
+  .content_sub .text_box .btn1 {font-size: 16px; gap: 14px; padding: 14px 22px;}
+  .content_sub .text_box .btn1 img {height: 13px;}
 
   /* ================= 카드 터치 인터랙션 (살짝 눌림) ================= */
   #section01 .board:active,
