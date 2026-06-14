@@ -192,7 +192,7 @@ header nav .gnb > li:hover .lnb {opacity: 1; visibility: visible;}
 #section02 .content li:hover img {filter: hue-rotate(40deg) saturate(120%);}
 
 #section02 .content li a {display: block; padding: 60px 36px 36px 36px;}
-#section02 .content li a h3 {font-size: 28px; color: var(--text); margin-bottom: 55px;}
+#section02 .content li a h3 {font-size: 28px; color: #5317DB; margin-bottom: 55px;}
 #section02 .content li a .sec2_img1 {position: absolute; right: 10px; top: 15px;}
 #section02 .content li a p {font-size: 20px; color: var(--neon);}
 #section02 .content li a span {position: absolute; right: 36px; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: var(--neon);}
@@ -288,7 +288,7 @@ footer .footlink a:hover {color: var(--neon);}
 @media (max-width: 768px) {
 
   /* ---------- 공통 : 가로 스크롤 방지 / 하단바 공간 확보 ---------- */
-  body {overflow-x: hidden; padding-bottom: 155px;}   /* 하단 미니플레이어(재생바 포함)+탭바 높이만큼 여백 */
+  body {overflow-x: hidden; padding-bottom: calc(168px + env(safe-area-inset-bottom));}   /* 하단 미니플레이어(재생바 포함)+탭바 높이 + 노치 안전영역만큼 여백 */
   .container {max-width: 100%; padding-left: 16px; padding-right: 16px; box-sizing: border-box;}
   .container img {max-width: 100%; height: auto;}
 
@@ -423,18 +423,18 @@ footer .footlink a:hover {color: var(--neon);}
   #hero_sub {height: 220px;}
   #hero_sub .textbox .text1 {font-size: 15px; margin-bottom: 14px;}
   #hero_sub .textbox strong {font-size: 24px; margin-bottom: 14px;}
-  #hero_sub .textbox p {font-size: 14px;}
+  #hero_sub .textbox p {font-size: 14px; line-height: 1.5;}
 
   .sub_nav {padding: 28px 16px;}
   .sub_nav ul {width: 100%; max-width: 360px;}
   .sub_nav ul li a {height: 44px; line-height: 44px; font-size: 15px;}
 
-  #sectionbox_sub {padding-bottom: 60px;}
+  #sectionbox_sub {padding: 0 16px 40px;}
   #sectionbox_sub h2 {font-size: 22px;}
-  #sectionbox_sub h2 p {font-size: 15px; margin-bottom: 30px;}
+  #sectionbox_sub h2 p {font-size: 15px; margin-bottom: 30px; line-height: 1.5;}
 
   .content_sub {min-height: 320px; border-radius: 16px;}
-  .content_sub .text_box {padding: 30px 18px;}
+  .content_sub .text_box {padding: 32px 18px;}
   .content_sub .text_box span {font-size: 22px; margin-bottom: 28px;}
   .content_sub .text_box .btn1 {font-size: 16px; gap: 16px; padding: 14px 22px;}
 
@@ -490,5 +490,12 @@ footer .footlink a:hover {color: var(--neon);}
   html.light header nav {background: #ffffff; box-shadow: -8px 0 30px rgba(80,60,140,0.18);}
   html.light .nav-backdrop {background: rgba(40,28,70,0.35);}
   html.light .bottom-nav {background: rgba(255,255,255,0.88); border-top: 1px solid var(--line); box-shadow: 0 -6px 22px rgba(139,92,246,0.12);}
+  /* 라이트 모드 : 미니 플레이어(하단 플레이리스트)도 밝게 → 하단탭과 톤 일치 */
+  html.light .mini-player {background: rgba(255,255,255,0.92); border: 1px solid var(--line); box-shadow: 0 14px 38px rgba(80,60,140,0.18); color: var(--text);}
+  html.light .mini-player .mp-text strong {color: var(--text);}
+  html.light .mini-player .mp-text span {color: var(--muted);}
+  html.light .mini-player .mp-controls button {color: var(--text);}
+  html.light .mini-player .mp-time {color: var(--muted);}
+  html.light .mini-player .mp-bar {background: rgba(20,12,40,0.12);}
 
 }
